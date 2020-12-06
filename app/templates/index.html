@@ -1,0 +1,80 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="">
+  <div class="jumbotron jumbotron-fluid" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg');">
+    <div class="container text-white text-center">
+      <h2 class="card-title h1-responsive font-bold">Welcome to Pitch World</h2>
+      <p class="lead">Life should not be boring. Welcome to pitches where you can view,like,create or comment on different pitches and leave a feedback .</p>
+      <a class="btn btn-outline-white btn-md" href="{{url_for('main.newPitch')}}"><i class="fas fa-clone left"></i>Create Pitch</a>
+    </div>
+  </div>
+
+<h3 class="text-center text-uppercase text-bold">Categories</h3>
+<hr>
+
+  <div class="row m-3">
+    <div class="col-sm">
+      <div class=" card col-sm pt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3 class="">Interviews Pitches</h3>
+            <hr>
+            <p>A job interview elevator pitch is a thorough-yet-concise breakdown of who you are, what you've accomplished </p>
+                <a href="{{url_for('main.displayInterviewCategory')}}" class="btn btn-default btn-center -center">
+                View Pitch</a>
+        </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class=" card col-sm mt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3>Promotion Pitches</h3>
+            <hr>
+            <p>Developing promotional pitches can provide an effective way to advertise and market your small business to potential customers.  </p>
+                <a href="{{url_for('main.displayPromotionCategory')}}" class="btn btn-default btn-center -center">
+                View Pitch</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row m-3">
+    <div class="col-sm">
+      <div class=" card col-sm mt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3>Product Pitches</h3>
+            <hr>
+            <p> Creating a winning product pitch. A successful product pitch isn’t a monologue. It’s a dialogue.</p>
+                <a href="{{url_for('main.displayProductCategory')}}" class="btn btn-default btn-center -center">
+                View Pitch</a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-sm">
+      <div class=" card col-sm mt-2">
+        <div class="well well-lg p-3" style="text-align: center;">
+            <h3>Pickup Lines Pitches</h3>
+            <hr>
+            <p> Here are the great pickup lines that should be included in your pitch</p>
+                <a href="{{url_for('main.displayPickupCategory')}}" class="btn btn-default btn-center -center">
+                View Pitch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+<footer class="page-footer font-small blue-grey darken-3">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="">pitch</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+</div>
+
+{% endblock %}
