@@ -71,7 +71,7 @@ def newPitch():
     title = 'NEW PITCH'
     return render_template('newPitch.html',title = title,pitchform = pitch) 
 
-@main.route('/category/interview',methods= ['GET'])
+@main.route('/category/interview',methods= ['POST','GET'])
 def displayInterviewCategory():
     interviewPitches = Pitch.get_pitches('interview')
     return render_template('category/interview.html',interviewPitches = interviewPitches)
@@ -117,7 +117,7 @@ def viewPitch(id):
     if commentForm.validate_on_submit():
         comment = commentForm.text.data
 
-        newComment = Comment(comment = comment,user = current_user,pitch_id= id)
+        newComment = Comment(comment = comment,user = current_user,pitch_id = pitch)
 
         newComment.saveComment()
 
