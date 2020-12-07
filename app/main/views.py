@@ -90,4 +90,40 @@ def displayPromotionCategory():
 def displayPickupCategory():
     pickupPitches = Pitch.get_pitches('pickup')
     return render_template('category/pickup.html',pickupPitches = pickupPitches)
- 
+
+@main.route('/comment/<int:id>',methods= ['POST','GET'])
+@login_required
+def viewPitch(id):
+    onepitch = Pitch.getPitchId(id)
+    comments = Comment.getComments(id)
+
+    if request.args.get("like"):
+        onepitch.likes = onepitch.likes + 1
+
+        db.session.add(onepitch)
+        db.session.commit()
+
+        return redirect("/comment/{pitch_id}".format(pitch_id=pitch.id))
+
+    elif request.args.get("dislike"):
+        onepitch.dislikes = onepitch.dislikes + 1
+
+        db.session.add(onepitch)
+        db.session.commit()
+
+        return redirect("/comment/{pitch_id}".format(pitch_id=pitch.id))
+
+    commentForm = CommentForm()
+    if commentForm.validate_on_submit():
+        comment = commentForm.text.data
+
+        newComment = Comment(comment = comment,user = current_user,pitch_id= id)
+
+        newComment.saveComment()
+
+    return render_template('comment.html',commentForm = commentForm,comments = comments,pitch = onepitch)
+
+
+@main.route('/about')
+def about():
+    return render_template('about.html', title = 'About')
